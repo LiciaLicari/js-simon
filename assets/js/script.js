@@ -14,9 +14,35 @@ Da quanti secondi è composto un minuto?1m ---> 60s
 Da quanti millisecondi è composto un secondo? 1s ---> 1000ms
 Quanti millisecondi mi separano da domani alle 9:30?
 Esiste un oggetto JS in grado di gestire le date? new date
-Esistono dei metodi per trasformare una data in millisecondi?
+Esistono dei metodi per trasformare una data in millisecondi? date.parse
 
 */
+// const now = new Date();
+// const day = now.getDay(); // returns a number representing the day of the week, starting with 0 for Sunday
+// const hours = now.getHours();
+// const minutes = now.getMinutes();
+// const seconds = now.getSeconds();
+// const milliseconds = now.getMilliseconds();
 
-// const d = new Date("September 06, 2023 09:30:00");
-// let ms = d.getMilliseconds();
+// console.log(`Today is day ${day} and the time is ${hours}:${minutes}:${seconds}:${milliseconds}.`);
+
+
+let deadline = (new Date("2023-09-10T09:30")).getTime();
+//console.log(deadline);
+const clock = setInterval(function() {
+
+    document.querySelector(".countdown").innerHTML = deadline;
+
+    if (deadline === 0) {
+        clearInterval(clock);
+        alert("game over");
+    } else {
+        deadline--;
+    }
+
+}, 1000);
+
+//timer - ora attuale
+// data di domani - data di oggi / 1000
+
+
