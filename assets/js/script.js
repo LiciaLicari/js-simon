@@ -26,45 +26,42 @@ Esistono dei metodi per trasformare una data in millisecondi? date.parse
 
 // console.log(`Today is day ${day} and the time is ${hours}:${minutes}:${seconds}:${milliseconds}.`);
 
-const timeRNow = new Date().getTime();
-console.log(timeRNow);
 
-const deadline = (new Date("2023, 09, 06, 09:30:00")).getTime(); // ms che mancano
-//console.log(deadline);
-
-const remainingTime = deadline - timeRNow;
-console.log(remainingTime);
 
 // function msToTime(deadline) {
 //     let milliseconds = Math.floor((deadline % 1000) / 100),
 //       seconds = Math.floor((deadline / 1000) % 60),
 //       minutes = Math.floor((deadline / (1000 * 60)) % 60),
 //       hours = Math.floor((deadline / (1000 * 60 * 60)) % 24);
-  
+
 //     hours = (hours < 10) ? "0" + hours : hours;
 //     minutes = (minutes < 10) ? "0" + minutes : minutes;
 //     seconds = (seconds < 10) ? "0" + seconds : seconds;
-  
+
 //     return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 //   }
 //   //console.log(msToTime(deadline))
 
 
-const clock = setInterval(function() {
 
-    document.querySelector(".countdown").innerHTML = deadline;
-
-
-    if (deadline === 0) {
-        clearInterval(clock);
-        alert("game over");
-    } else {
-        deadline--;
-    }
-
+const clock = setInterval(function () {
+    
+    const deadline = (new Date("2023, 9, 6, 09:30:00")).getTime(); // domani 
+    //console.log(deadline);
+    const timeRNow = new Date().getTime(); // ora
+    console.log(timeRNow);
+    
+    // data di domani - data di oggi / 1000
+    const remainingTime = deadline - timeRNow; // tempo che rimane all'ora X
+    console.log(remainingTime);
+    
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    
+    document.querySelector(".countdown").innerHTML = `${hours(2,0)}, ${minutes(2,0)}, ${seconds(2,0)}`;
 }, 1000);
 
-//timer - ora attuale
-// data di domani - data di oggi / 1000
+
 
 
