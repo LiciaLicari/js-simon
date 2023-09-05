@@ -26,12 +26,34 @@ Esistono dei metodi per trasformare una data in millisecondi? date.parse
 
 // console.log(`Today is day ${day} and the time is ${hours}:${minutes}:${seconds}:${milliseconds}.`);
 
+const timeRNow = new Date().getTime();
+console.log(timeRNow);
 
-let deadline = (new Date("2023-09-10T09:30")).getTime();
+const deadline = (new Date("2023, 09, 06, 09:30:00")).getTime(); // ms che mancano
 //console.log(deadline);
+
+const remainingTime = deadline - timeRNow;
+console.log(remainingTime);
+
+// function msToTime(deadline) {
+//     let milliseconds = Math.floor((deadline % 1000) / 100),
+//       seconds = Math.floor((deadline / 1000) % 60),
+//       minutes = Math.floor((deadline / (1000 * 60)) % 60),
+//       hours = Math.floor((deadline / (1000 * 60 * 60)) % 24);
+  
+//     hours = (hours < 10) ? "0" + hours : hours;
+//     minutes = (minutes < 10) ? "0" + minutes : minutes;
+//     seconds = (seconds < 10) ? "0" + seconds : seconds;
+  
+//     return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+//   }
+//   //console.log(msToTime(deadline))
+
+
 const clock = setInterval(function() {
 
     document.querySelector(".countdown").innerHTML = deadline;
+
 
     if (deadline === 0) {
         clearInterval(clock);
