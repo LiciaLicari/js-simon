@@ -52,14 +52,23 @@ const clock = setInterval(function () {
     console.log(timeRNow);
     
     // data di domani - data di oggi / 1000
-    const remainingTime = deadline - timeRNow; // tempo che rimane all'ora X
+    let remainingTime = deadline - timeRNow; // tempo che rimane all'ora X
     console.log(remainingTime);
     
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((difference % (1000 * 60)) / 1000);
     
-    document.querySelector(".countdown").innerHTML = `${hours(2,0)}, ${minutes(2,0)}, ${seconds(2,0)}`;
+    if (seconds === 0) {
+        clearInterval(countdown)
+        
+    }
+
+    //stampo in pagina
+    document.querySelector(".countdown").innerHTML = hours.toFixed() + " : " + minutes.toFixed() + " : " + seconds.toFixed()
+    
+
+
 }, 1000);
 
 
