@@ -53,14 +53,14 @@ const clock = setInterval(function () {
     
     // data di domani - data di oggi / 1000
     let remainingTime = deadline - timeRNow; // tempo che rimane all'ora X
-    console.log(remainingTime);
+    //console.log(remainingTime);
     
     let hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
     
-    if (seconds === 0) {
-        clearInterval(countdown)
+    if (seconds < 0) {
+        clearInterval(clock);
         
     }
 
